@@ -3,6 +3,7 @@ import {BehaviorSubject, Observable, of} from 'rxjs';
 import {Quiz} from '../models/quiz.model';
 import {QUIZ_LIST} from '../mocks/quiz-list.mock';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {Question} from "../models/question.model";
 
 @Injectable({
   providedIn: 'root'
@@ -22,26 +23,36 @@ export class QuizService {
 
   /**
    * Observable which contains the list of the quiz.
-   * Naming convention: Add '$' at the end of the variable name to highlight it as an Observable.
+   * Naming convention: Add '$' at the end of the variable name to highlight it as an Observable
    */
   public quizzes$: BehaviorSubject<Quiz[]> = new BehaviorSubject(this.quizzes);
-  public URL_QUIZZES: string = "https://raw.githubusercontent.com/NablaT/starter-quiz-two/master/mock-quiz.json"
+  public quizId$: BehaviorSubject<number> = new BehaviorSubject<number>(this.quizId)
+  public URL_QUIZZES: string = "https://raw.githubusercontent.com/QuentinDubois-Polytech/starter-quizz-2022/master/src/mocks/quiz-list-with-id.json"
 
   constructor(private http: HttpClient) {
     this.getQuizzes()
   }
 
   getQuizzes() {
-    this.http.get<Quiz[]>(this.URL_QUIZZES).subscribe(quizList => quizList.forEach(quiz => this.addQuiz(quiz)))
+    console.log('before');
+    this.http.get<Quiz[]>(this.URL_QUIZZES).subscribe(quizList => {
+      console.log('into subscribe')
+      quizList.forEach(quiz => this.addQuiz(quiz))
+    })
+    console.log('after');
     this.quizzes$.next(this.quizzes)
+
 
   }
 
   addQuiz(quiz: Quiz) {
     // You need here to update the list of quiz and then update our observable (Subject) with the new list
     // More info: https://angular.io/tutorial/toh-pt6#the-searchterms-rxjs-subjec
-    quiz.id = String(this.quizId++);
     this.quizzes.push(quiz);
+    if (Number(quiz.id) > this.quizId) {
+      this.quizId = Number(quiz.id);
+    }
+    this.quizId$.next(this.quizId);
     this.quizzes$.next(this.quizzes);
   }
 
@@ -51,7 +62,12 @@ export class QuizService {
   }
 
   getQuiz(id: number): Observable<Quiz> {
-    const quiz = this.quizzes.find(quiz => quiz.id === String(id))!;
+    const quiz = this.quizzes.find(quiz => Number(quiz.id) === id)!;
     return of(quiz);
   }
+
+  // createQuestion(question: Question, idQuiz: number) {
+  //   const index = this.quizzes.findIndex(quiz => quiz.id === String(idQuiz));
+  //   //this.quizzes[index].
+  // }
 }

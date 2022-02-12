@@ -20,9 +20,11 @@ export class QuizFormComponent implements OnInit {
    */
   public quizForm: FormGroup;
   public THEME_LIST: string[] = ['Acteur', 'Sport'];
+  public quizId: number = 0;
 
   constructor(public formBuilder: FormBuilder, public quizService: QuizService) {
     // Form creation
+    this.quizService.quizId$.subscribe(id => this.quizId = id);
     this.quizForm = this.formBuilder.group({
       name: [''],
       theme: [''],
@@ -44,6 +46,7 @@ export class QuizFormComponent implements OnInit {
     // You will see your quiz object when you click on the create button.
     quizToCreate.questions = [];
     quizToCreate.currentDate = new Date();
+    quizToCreate.id = String(++this.quizId)
     this.quizService.addQuiz(quizToCreate);
     console.log('Add quiz: ', quizToCreate);
     // Now, add your quiz in the list!

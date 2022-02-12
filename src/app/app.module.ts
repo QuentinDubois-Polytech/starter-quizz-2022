@@ -11,9 +11,9 @@ import {HttpClientModule} from "@angular/common/http";
 import { EditQuizComponent } from './quizzes/edit-quiz/edit-quiz.component';
 import {RouterModule} from "@angular/router";
 import {AppRoutingModule} from "./routing/app.routing.module";
-import { QuestionsComponentComponent } from './quizzes/questions/questions-component/questions-component.component';
-import { QuestionListComponentComponent } from './quizzes/questions/question-list-component/question-list-component.component';
-import { QuestionFormComponentComponent } from './quizzes/questions/question-form-component/question-form-component.component';
+import { QuestionsComponent } from './quizzes/questions/questions.component';
+import { QuestionListComponent } from './quizzes/question-list/question-list.component';
+import { QuestionFormComponent } from './quizzes/question-form/question-form.component';
 
 @NgModule({
   declarations: [
@@ -23,9 +23,9 @@ import { QuestionFormComponentComponent } from './quizzes/questions/question-for
     HeaderComponent,
     QuizFormComponent,
     EditQuizComponent,
-    QuestionsComponentComponent,
-    QuestionListComponentComponent,
-    QuestionFormComponentComponent
+    QuestionsComponent,
+    QuestionListComponent,
+    QuestionFormComponent
   ],
   imports: [
     BrowserModule,
