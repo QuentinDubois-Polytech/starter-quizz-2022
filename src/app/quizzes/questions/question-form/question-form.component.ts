@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {FormArray, FormBuilder, FormGroup} from "@angular/forms";
-import {QuizService} from "../../../services/quiz.service";
+import {QuizService} from "../../../../services/quiz.service";
+import {Question} from "../../../../models/question.model";
+import {Quiz} from "../../../../models/quiz.model";
 
 @Component({
   selector: 'app-question-form',
@@ -9,6 +11,9 @@ import {QuizService} from "../../../services/quiz.service";
 })
 
 export class QuestionFormComponent implements OnInit {
+
+  @Input()
+  quiz!: Quiz
 
   public questionForm: FormGroup;
 
@@ -38,8 +43,10 @@ export class QuestionFormComponent implements OnInit {
     this.answers.push(this.createAnswer())
   }
 
-  // createQuestion() {
-  //   question: Question =
-  //   this.quizService.createQuestion()
-  // }
+  addQuestion() {
+    const question: Question = this.questionForm.getRawValue() as Question
+    // this.quiz.questions.push(question)
+    // this.quizService.updateQuiz(this.quiz)
+    this.quizService.addQuestion(question, this.quiz)
+  }
 }

@@ -4,7 +4,9 @@
 
 1) Install [NodeJS Installer](https://nodejs.org/en/download/)
 
-Note, for those using linux, you can find instruction to install NodeJS [here](https://github.com/nodesource/distributions/blob/master/README.md#debinstall) (install the latest LTS Version 14.15.4).
+Note, for those using linux, you can find instruction to install
+NodeJS [here](https://github.com/nodesource/distributions/blob/master/README.md#debinstall) (install the latest LTS
+Version 14.15.4).
 
 2) Fork this repository
 
@@ -18,13 +20,13 @@ git clone https://github.com/YOUR_USERNAME/starter-quiz-two.git
 
 4) Install the dependencies
 
-Open command prompt inside the repository (starter-quiz-two) and run: 
+Open command prompt inside the repository (starter-quiz-two) and run:
 
 ```
 npm install
 ```
 
-If you have an error saying that npm is not a known command, it means that NodeJS is not installed. 
+If you have an error saying that npm is not a known command, it means that NodeJS is not installed.
 
 4) Install angular/cli
 
@@ -37,9 +39,12 @@ npm install -g @angular/cli
 ```
 npm start
 ```
-Then navigate to `http://localhost:4200/` to see the application. The app will automatically reload if you change any of the source files.
 
-You can also use the command `ng serve` to start the app and also `ng serve --open` to open directly the app in the browser.
+Then navigate to `http://localhost:4200/` to see the application. The app will automatically reload if you change any of
+the source files.
+
+You can also use the command `ng serve` to start the app and also `ng serve --open` to open directly the app in the
+browser.
 
 ## Run the linter
 
@@ -49,25 +54,29 @@ npm run lint
 
 Note: The linter will be executed before each commit. If the linter fails then the commit will be canceled.
 
-Several issues from the linter can be fixed automatically (for instance: trailing whitespace, missing new line etc...) thanks to the following command:
+Several issues from the linter can be fixed automatically (for instance: trailing whitespace, missing new line etc...)
+thanks to the following command:
+
 ```
 npm run lint -- --fix
 ```
+
 But you will have to manually manage the other types of error.
 
 ## Angular documentation
 
-The best documentation is the [Official Angular Documentation](https://angular.io/docs). 
-It contains everything and it is always up to date.
+The best documentation is the [Official Angular Documentation](https://angular.io/docs). It contains everything and it
+is always up to date.
 
-#### Important note 
-We are working with Angular version 2+ (here Angular 8). When you look for some documentation, add "Angular 2" in your 
-research to be sure to find the right documentation. You might find documentation about AngularJS, run if it's the case! 
+#### Important note
+
+We are working with Angular version 2+ (here Angular 8). When you look for some documentation, add "Angular 2" in your
+research to be sure to find the right documentation. You might find documentation about AngularJS, run if it's the case!
 It's a very old version totally different from our version.
 
 ## Documentation - Links
 
-Documentation Angular: 
+Documentation Angular:
 
 - [Directives](https://angular.io/docs/ts/latest/guide/attribute-directives.html)
 - [Pipes](https://angular.io/docs/ts/latest/guide/pipes.html)
@@ -84,10 +93,11 @@ Documentation on Observables:
 
 ## Questions?
 
-Any question? Do not hesitate to contact us on slack for any question. 
+Any question? Do not hesitate to contact us on slack for any question.
 
 ## Additional commands available
 
 ### Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Run `ng generate component component-name` to generate a new component. You can also
+use `ng generate directive|pipe|service|class|guard|interface|enum|module`.

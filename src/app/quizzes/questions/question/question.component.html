@@ -1,0 +1,16 @@
+<div class="card">
+  <h2>
+    <i class="fab fa-leanpub"></i>
+    Nom : {{question.label}} <br/>
+  </h2>
+
+  <div class="quiz-list">
+    <div class="quiz" *ngFor="let answer of question.answers; let i = index">
+      {{i}} - {{answer.value}}
+      <i class="fa-solid fa-check"*ngIf="answer.isCorrect === true"></i>
+    </div>
+  </div>
+
+  <button (click)="deleteQuiz()" class="button-card">Delete</button>
+
+</div>

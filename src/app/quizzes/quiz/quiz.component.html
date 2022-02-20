@@ -1,19 +1,19 @@
 <div class="card" *ngIf="quiz">
-    <h2>
-      <i *ngIf="quiz.theme === 'Sport'" class="fas fa-volleyball-ball"></i>
-      <i *ngIf="quiz.theme === 'Actor'" class="fab fa-leanpub"></i>
-      Nom : {{quiz.name}} <br/>
-      <span>Theme : {{quiz.theme}}</span> <br/>
-      <span>Taille : {{quiz.questions.length}}</span>
-      <span *ngIf="quiz.currentDate !== undefined">
+  <h2>
+    <i *ngIf="quiz.theme === 'Sport'" class="fas fa-volleyball-ball"></i>
+    <i *ngIf="quiz.theme === 'Actor'" class="fab fa-leanpub"></i>
+    Nom : {{quiz.name}} <br/>
+    <span>Theme : {{quiz.theme}}</span> <br/>
+    <span>Taille : {{quiz.questions.length}}</span>
+    <span *ngIf="quiz.currentDate !== undefined">
         <br/>
         Date : {{quiz.currentDate | date:'shortDate'}}
       </span>
-    </h2>
-    <button class="button-card" (click)="selectQuiz()">Select</button>
-    <button (click)="deleteQuiz()" class="button-card">Delete</button>
-    <nav>
-      <a routerLink="/edit-quiz/{{quiz.id}}">Edit</a>
-    </nav>
+  </h2>
+  <button class="button-card" (click)="selectQuiz()">Select</button>
+  <button (click)="deleteQuiz()" class="button-card">Delete</button>
+  <nav>
+    <a routerLink="/edit-quiz/{{quiz.id}}">Edit</a>
+  </nav>
 
 </div>

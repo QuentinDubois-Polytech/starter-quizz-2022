@@ -14,10 +14,10 @@ export class QuizService {
    * https://angular.io/docs/ts/latest/tutorial/toh-pt4.html
    */
 
-   /**
-    * The list of quiz.
-    * The list is retrieved from the mock.
-    */
+  /**
+   * The list of quiz.
+   * The list is retrieved from the mock.
+   */
   private quizzes: Quiz[] = [];
   private quizId: number = 0;
 
@@ -27,7 +27,8 @@ export class QuizService {
    */
   public quizzes$: BehaviorSubject<Quiz[]> = new BehaviorSubject(this.quizzes);
   public quizId$: BehaviorSubject<number> = new BehaviorSubject<number>(this.quizId)
-  public URL_QUIZZES: string = "https://raw.githubusercontent.com/QuentinDubois-Polytech/starter-quizz-2022/master/src/mocks/quiz-list-with-id.json"
+
+  private URL_QUIZZES: string = "https://raw.githubusercontent.com/QuentinDubois-Polytech/starter-quizz-2022/master/src/mocks/quiz-list-with-id.json"
 
   constructor(private http: HttpClient) {
     this.getQuizzes()
@@ -66,8 +67,19 @@ export class QuizService {
     return of(quiz);
   }
 
-  // createQuestion(question: Question, idQuiz: number) {
-  //   const index = this.quizzes.findIndex(quiz => quiz.id === String(idQuiz));
-  //   //this.quizzes[index].
-  // }
+  addQuestion(question: Question, quiz: Quiz) {
+    const index = this.findIndexQuiz(quiz);
+    this.quizzes[index].questions.push(question)
+    this.quizzes$.next(this.quizzes);
+  }
+
+  deleteQuestion(question: Question, quiz: Quiz) {
+    const index = this.findIndexQuiz(quiz);
+    this.quizzes[index].questions = this.quizzes[index].questions.filter(q => q.label != question.label)
+    this.quizzes$.next(this.quizzes);
+  }
+
+  private findIndexQuiz(quiz: Quiz) {
+    return this.quizzes.findIndex(q => Number(q.id) === Number(quiz.id))!
+  }
 }

@@ -1,8 +1,11 @@
-<h1>Create new questions</h1>
-<h2>Title</h2>
+<h2>{{quiz.theme}}</h2>
 <div class="card">
+<h2>Create a new question</h2>
   <form class="quiz-form" [formGroup]="questionForm">
+    <label for="title">
+      Title <br>
     <input type="Title" [formControlName]="'label'">
+    </label>
     <button type="submit" class="button-card" (click)="addAnswer()">Add Answer</button>
     <div class="answer" formArrayName="answers">
       <div *ngFor="let address of answers.controls; let i = index">
@@ -17,7 +20,7 @@
         </div>
       </div>
     </div>
-    <button type="submit" class="button-card">Create</button>
+    <button type="submit" class="button-card" (click)="addQuestion()">Create</button>
   </form>
 </div>
 
