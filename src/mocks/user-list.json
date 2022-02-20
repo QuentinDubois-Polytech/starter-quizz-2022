@@ -1,16 +1,16 @@
 [
   {
-    "username": "Quentin",
+    "name": "Quentin",
     "password": "azerty",
     "id": 1
   },
   {
-    "username": "Noémie",
+    "name": "Noémie",
     "password": "qwerty",
     "id": 2
   },
   {
-    "username": "Stéphanie",
+    "name": "Stéphanie",
     "password": "qwertz",
     "id": 3
   }

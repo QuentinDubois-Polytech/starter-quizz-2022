@@ -16,7 +16,7 @@ export class UserFormComponent implements OnInit {
   constructor(public formBuilder: FormBuilder, public userService: UserService) {
     this.userService.userId$.subscribe(id => this.userId = id);
     this.userForm = this.formBuilder.group({
-      username: '',
+      name: '',
       password: ''
     })
   }
