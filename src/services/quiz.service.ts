@@ -1,7 +1,6 @@
 import {Injectable} from '@angular/core';
 import {BehaviorSubject, Observable, of} from 'rxjs';
 import {Quiz} from '../models/quiz.model';
-import {QUIZ_LIST} from '../mocks/quiz-list.mock';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Question} from "../models/question.model";
 
@@ -35,12 +34,12 @@ export class QuizService {
   }
 
   getQuizzes() {
-    console.log('before');
+    console.log('before getQuizzes : ', this.quizzes);
     this.http.get<Quiz[]>(this.URL_QUIZZES).subscribe(quizList => {
       console.log('into subscribe')
       quizList.forEach(quiz => this.addQuiz(quiz))
     })
-    console.log('after');
+    console.log("After getQuizzes", this.quizzes)
     this.quizzes$.next(this.quizzes)
 
 
@@ -62,8 +61,16 @@ export class QuizService {
     this.quizzes$.next(this.quizzes);
   }
 
-  getQuiz(id: number): Observable<Quiz> {
-    const quiz = this.quizzes.find(quiz => Number(quiz.id) === id)!;
+  getQuiz(id: string): Observable<Quiz> {
+    console.log("getQuiz : quizzes", this.quizzes, this.quizzes.length)
+    console.log("length before : ", this.quizzes.length)
+
+    // @ts-ignore
+    const quiz = this.quizzes.find(quiz => quiz.id == id)!;
+
+    console.log("length after : ", this.quizzes.length)
+
+    console.log("getQuiz : ", quiz);
     return of(quiz);
   }
 
